@@ -1,0 +1,15 @@
+diff_drive_controller:
+  type: "diff_drive_controller/DiffDriveController"
+  left_wheel: 'Revolute 2'
+  right_wheel: 'Revolute 1'
+  publish_rate: 50
+  pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.0, 0.0, 0.001]
+  twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.0, 0.0, 0.001]
+  enable_odom_tf: false  # Disable odom TF publishing
+  enable_twist: true
+  use_stamped_vel: true
+  cmd_vel_timeout: 0.5
+  allow_multiple_cmd_vel_publishers: false
+  base_frame_id: 'base_link'
+  odom_frame_id: 'odom'
+

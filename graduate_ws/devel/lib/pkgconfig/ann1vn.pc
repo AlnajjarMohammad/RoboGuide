@@ -1,0 +1,8 @@
+prefix=/home/mohammad/graduate_ws/devel
+
+Name: ann1vn
+Description: Description of ann1vn
+Version: 0.1.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

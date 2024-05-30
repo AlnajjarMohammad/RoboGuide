@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mohammad/graduate_ws/src/jetson_nano_bot/navstack_pub/src/nonlinearanalyticconditionalgaussianodo.cpp
+robot_pose_ekf/nonlinearanalyticconditionalgaussianodo.h
+-
+bfl/wrappers/rng/rng.h
+-
+
+/home/mohammad/graduate_ws/src/jetson_nano_bot/navstack_pub/src/odom_estimation.cpp
+robot_pose_ekf/odom_estimation.h
+-
+
+/home/mohammad/graduate_ws/src/jetson_nano_bot/navstack_pub/src/odom_estimation_node.cpp
+robot_pose_ekf/odom_estimation_node.h
+-
+

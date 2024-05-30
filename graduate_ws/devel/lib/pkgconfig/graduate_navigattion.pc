@@ -1,0 +1,8 @@
+prefix=/home/mohammad/graduate_ws/devel
+
+Name: graduate_navigattion
+Description: Description of graduate_navigattion
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

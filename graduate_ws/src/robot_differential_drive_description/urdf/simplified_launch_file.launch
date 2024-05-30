@@ -1,0 +1,15 @@
+<launch>
+  <!-- Define the robot model argument -->
+  <arg name="model" default="$(find robot_differential_drive_description)/urdf/robot_differential_drive.xacro"/>
+
+  <!-- Load the robot description parameter -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'" />
+
+  <!-- Start the robot state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- Static transforms for wheels -->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="left_wheel_static" args="0.014129 0.064323 0.05 0 0 0 /base_link /left_wheel_1 100" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="right_wheel_static" args="0.014129 -0.155677 0.05 0 0 0 /base_link /right_wheel_1 100" />
+</launch>
+

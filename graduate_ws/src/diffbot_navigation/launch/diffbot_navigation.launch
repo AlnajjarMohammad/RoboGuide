@@ -1,0 +1,46 @@
+<launch>
+  <!-- Start the robot state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- Transform publisher for lidar -->
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_lidar" args="0.064129 -0.045677 0.125 0 0 0 base_link lidar_1 100" />
+
+  <!-- Lidar Data Publisher Using RPLIDAR from Slamtec -->
+  <node name="rplidarNode" pkg="rplidar_ros" type="rplidarNode" output="screen">
+    <param name="serial_port" type="string" value="/dev/ttyUSB0"/>
+    <param name="serial_baudrate" type="int" value="115200"/> 
+    <param name="frame_id" type="string" value="lidar_1"/>
+    <param name="inverted" type="bool" value="false"/>
+    <param name="angle_compensate" type="bool" value="true"/>
+  </node> 
+  
+  <!-- Custom nodes for initial pose and RViz interaction -->
+  <node pkg="diffbot_navigation" type="rviz_click_to_2d" name="rviz_click_to_2d"/>
+  
+  <!-- EKF Odometry Publisher -->
+  <node pkg="diffbot_navigation" type="ekf_odom_pub" name="ekf_odom_pub">
+  </node>
+  
+  <!-- Arguments -->
+  <arg name="map_file" default="$(find diffbot_navigation)/maps/collage2.yaml"/>
+  <arg name="open_rviz" default="true"/>
+  <arg name="move_forward_only" default="false"/>
+  
+
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!-- AMCL -->
+  <include file="$(find diffbot_navigation)/launch/amcl.launch"/>
+
+  <!-- move_base -->
+  <include file="$(find diffbot_navigation)/launch/move_base.launch">
+    <arg name="move_forward_only" value="$(arg move_forward_only)"/>
+  </include>
+
+  <!-- RViz -->
+  <group if="$(arg open_rviz)">
+    <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find diffbot_navigation)/rviz/navigation.rviz"/>
+  </group>
+</launch>
+

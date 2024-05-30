@@ -1,0 +1,2 @@
+diffbot_navigation
+-DCATKIN_DEVEL_PREFIX=/home/mohammad/graduate_ws/devel -DCMAKE_INSTALL_PREFIX=/home/mohammad/graduate_ws/install -DCATKIN_WHITELIST_PACKAGES=diffbot_navigation -G Unix Makefiles
